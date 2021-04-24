@@ -23,9 +23,9 @@ def get_wallpaper():
     wallpaper.set_footer(text=f"👍 {wallpaper_data['data']['upvotes']}    |   👎 {wallpaper_data['data']['downvotes']}  |   💬 {wallpaper_data['data']['comments']}")
     return wallpaper
 
-def get_joke(user):
+def get_joke():
     joke_data = pyjokes.get_joke()
-    joke = Embed(title="Joke", description=joke_data, footer=f"Requested by {user}")
+    joke = Embed(title="Joke", description=joke_data)
     return joke
 
 class MyClient(Client):
@@ -80,7 +80,7 @@ class MyClient(Client):
                     nofc = 1
 
                 for i in range(0, nofc):
-                    joke = get_joke(msg.author.name)
+                    joke = get_joke()
                     await msg.channel.send(embed=joke)
             if command == "info":
                 info_embed = Embed(title="Info", color=0x0f0f00)
